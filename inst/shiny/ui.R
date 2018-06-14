@@ -214,7 +214,7 @@ shinyUI(tagList(
                                conditionalPanel("input.tabs == 'model'",
                                                 h4("Build and Evaluate Niche Model"),
                                                 radioButtons("modelSel", "Modules Available:",
-                                                             choices = list("BIOCLIM", "Maxent", "GAM")),
+                                                             choices = list("BIOCLIM", "Maxent", "GAM", "Maxnet")),
                                                 HTML('<hr>'),
                                                 conditionalPanel("input.modelSel == 'Maxent'",
                                                                  uiTop(runMaxent_INFO),
@@ -232,12 +232,17 @@ shinyUI(tagList(
                                                                  uiTop(runGAM_INFO),
                                                                  runGAM_UI('runGAM'),
                                                                  actionButton('goGAM', 'Run')),
+                                                conditionalPanel("input.modelSel == 'Maxnet'",
+                                                                 uiTop(runMaxnet_INFO),
+                                                                 runMaxnet_UI('model_maxnet'),
+                                                                 actionButton('goMaxnet', 'Run')),
                                                 HTML('<hr>'),
                                                 downloadButton('dlEvalTbl', "Download CSV"),
                                                 HTML('<hr>'),
                                                 conditionalPanel("input.modelSel == 'Maxent'", uiBottom(runMaxent_INFO)),
                                                 conditionalPanel("input.modelSel == 'BIOCLIM'", uiBottom(runBIOCLIM_INFO)),
-                                                conditionalPanel("input.modelSel == 'GAM'", uiBottom(runGAM_INFO))
+                                                conditionalPanel("input.modelSel == 'GAM'", uiBottom(runGAM_INFO)),
+                                                conditionalPanel("input.modelSel == 'Maxnet'", uiBottom(runMaxnet_INFO))
                                ),
                                # VISUALIZE ####
                                conditionalPanel("input.tabs == 'vis'", 

@@ -842,6 +842,24 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session, "visSel", choices = list("Map Prediction" = 'mapPreds'))
   })
   
+  # # # # # # # # # # # # 
+  # module Maxnet ####
+  # # # # # # # # # # # # 
+  observeEvent(input$goMaxent, {
+    mod.maxnet <- callModule(runMaxnet_MOD, 'runMaxnet')
+    mod.maxnet()
+    runMaxnet_TBL(input, output, session)
+    # make sure the results were entered before proceeding
+    req(results())
+    # switch to Results tab
+    updateTabsetPanel(session, 'main', selected = 'Results')
+    # customize visualizations for maxent
+    updateRadioButtons(session, "visSel", 
+                       choices = list("Maxnet Evaluation Plots" = 'maxentEval',
+                                      "Plot Response Curves" = 'response',
+                                      "Map Prediction" = 'mapPreds'))
+  })
+  
   # # # # # # # # # # # # # # # # # #
   # MODEL: other controls ####
   # # # # # # # # # # # # # # # # # #

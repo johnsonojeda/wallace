@@ -1,0 +1,21 @@
+---
+title: "runMaxnet"
+
+output: html_document
+---
+
+***Background***
+
+etc etc etc
+
+- Without depending on Java
+
+More info to add....
+
+***Implementation***
+
+This module uses the `maxnet` R package for model tuning and evaluation of parameters for `maxent`
+
+***References***
+
+Phillips, S. J., Anderson, R. P., Dudík, M., Schapire, R. E., & Blair, M. E. (2017). Opening the black box: an open‐source release of Maxent. Ecography, 40(7), 887-893.
